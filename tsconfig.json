@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "allowJs": true, // Allow JavaScript files
+    "checkJs": false, // Enable type checking for JS files if needed
+    "resolveJsonModule": true, // Enable importing JSON files
+    "jsx": "react-jsx", // Enable JSX for React
+    "noEmit": true // No output JavaScript files (only type checking)
+  },
+  "include": ["src/**/*", "utils/**/*"], // Include your source files and utilities
+  "exclude": ["node_modules"] // Exclude node_modules to avoid slow performance
+}
