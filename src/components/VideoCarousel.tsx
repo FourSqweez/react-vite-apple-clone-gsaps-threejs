@@ -63,9 +63,7 @@ const VideoCarousel: React.FC = () => {
     if (loadedData.length > 3) {
       if (!isPlaying) {
         videoRef.current[videoId]?.pause();
-        console.log("video is paused");
       } else {
-        console.log("video is playing");
         startPlay && videoRef.current[videoId]?.play();
       }
     }
@@ -76,7 +74,6 @@ const VideoCarousel: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("current video id : ", videoId);
     let currentProgress = 0;
     let div = videoDivRef.current;
     let span = videoSpanRef.current;
