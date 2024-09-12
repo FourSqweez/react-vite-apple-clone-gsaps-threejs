@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
@@ -5,12 +6,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   timeline: gsap.core.Timeline;
-  rotationRef: any;
-  rotationState: any;
-  firstTarget: string;
-  secondTarget: string;
-  animationProps: any;
+  rotationRef: React.MutableRefObject<THREE.Group<THREE.Object3DEventMap>>;
+  rotationState: number;
+  firstTarget: "#view1" | "#view2";
+  secondTarget: "#view1" | "#view2";
+  animationProps: gsap.TweenVars;
 }
+
+interface GsapProps {
+  target: string;
+  animationProps: gsap.TweenVars;
+  scrollProps?: ScrollTrigger.Vars;
+}
+
+export const animateWithGsap = ({
+  target,
+  animationProps,
+  scrollProps,
+}: GsapProps) => {
+  gsap.to(target, {
+    ...animationProps,
+    scrollTrigger: {
+      trigger: target,
+      toggleActions: "restart reverse restart reverse",
+      start: "top 85%",
+      ...scrollProps,
+    },
+  });
+};
 
 export const animateWithGsapTimeline = ({
   timeline,
